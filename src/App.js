@@ -1,4 +1,5 @@
 import './App.css';
+import './style.css'
 import Search from "./component/search";
 import CurrentWeather from './component/currentWeather';
 import ChartComponent from './component/chart';
