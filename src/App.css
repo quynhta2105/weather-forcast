@@ -1,0 +1,215 @@
+.flex{
+  display: flex;
+}
+
+.App {
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-content{
+  width: 700px;
+  height: 550px;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2.5px 5px #888888;
+}
+
+.input_city{
+  height: 20px;
+  width: 100px;
+}
+
+.current_weather-content{
+  width: 192px;
+  height: 221px;
+}
+
+.current_time{
+  padding-left: 7px;
+}
+
+.current_weather-image{
+  width: 40%;
+  height: auto;
+}
+
+.current_temperature, .detail_current-weather{
+  font-size: 25px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.chart-content{
+  width: 440px;
+  height: 180px;
+  border-radius: 5px;
+}
+
+.hour-content{
+  width: 350px;
+  height: 100px;
+}
+
+.hour{
+  padding-left: 10px;
+}
+
+.hour:first-child{
+  padding-left: 0;
+}
+
+/* .hour_temp, .hour_time, .hour_img{
+  padding-left: 10px;
+} */
+
+.hour-img{
+  width: 40px;
+  height: 40px;
+}
+
+.pop_up{
+  width: 440px;
+  height: 200px;
+  top: 16%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 1.5px 3px #888888;
+  /* display: none; */
+}
+
+.close_popup-btn{
+  top: 1%;
+  right: 1%;
+  width: 30px;
+  height: 25px;
+  font-weight: bolder;
+  border: none;
+  background-color: white;
+}
+
+.close_popup-btn:hover, .weather:hover{
+  cursor: pointer;
+}
+
+.weather-content{
+  width: 440px;
+  height: 130.5px;
+}
+
+.weather{
+  width: 28%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.weather_image{
+  width: 35%;
+  height: auto;
+}
+
+.horizontal_flex-center{
+  justify-content: center;
+}
+.vertical_flex-center{
+  align-items: center;
+}
+.space_around{
+  justify-content: space-around;
+}
+.space_between{
+  justify-content: space-between;
+}
+.flex_column{
+  flex-direction: column;
+}
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
+.pt-20{
+  padding-top: 20px;
+}
+.pt-10{
+  padding-top: 10px;
+}
+.pl-20{
+  padding-left: 20px;
+}
+.pr-20{
+  padding-right: 20px;
+}
+.pl-40{
+  padding-left: 40px;
+}
+.pb-20{
+  padding-bottom: 20px;
+}
+.ml-20{
+  margin-left: 20px;
+}
+.ml-65{
+  margin-left: 65px;
+}
+.mt-20{
+  margin-top: 20px;
+}
+.mw-100{
+  max-width: 100%;
+}
+.w-100{
+  width: 100%;
+}
+.w-50{
+  width: 50%;
+}
+
+.center_text{
+  text-align: center;
+}
+.right-text{
+  text-align: right;
+}
+.center_image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.font_size-12{
+  font-size: 12px;
+}
+.font_size-15{
+  font-size: 15px;
+}
+
+.positon-absolute{
+  position: absolute;
+}
+.position-relative{
+  position: relative;
+}
+
+.nowrap{
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+}
+.bg-064FF0{
+  background-color: #064FF0;
+}
+.text_white{
+  color: white;
+}

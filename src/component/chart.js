@@ -1,0 +1,77 @@
+import { Line } from "react-chartjs-2"
+import { Chart as ChartJS, registerables } from 'chart.js';
+
+ChartJS.register(...registerables);
+const ChartComponent = ({weather}) => {
+    const time = weather?.forecast.forecastday[0].hour.map((el) => el.time.split(' ')[1].split(':')[0]);
+    const tph = weather?.forecast.forecastday[0].hour.map((el) => el.temp_c)
+    // console.log(tph)
+    const now = new Date();
+    return(
+        <div className=" flex horizontal_flex-center flex_column">
+            <div className="chart-content mt-20 ml-20 pb-20 pl-40">
+                <div>Temperature</div>
+                {
+                    <>
+                        {tph &&
+                            <Line
+                            options={{
+                                plugins: {
+                                    legend: {
+                                    display: false
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        display: false
+                                    },
+                                    y: {
+                                        display: false,
+                                        beginAtZero: true,
+                                        max: 50,
+                                    },
+                                },
+                                elements: {
+                                    point:{
+                                        radius: 2
+                                    }
+                                }
+                            }}
+                                data={{
+                                    labels: time,
+                                    datasets:[{
+                                        label: "Temperature",
+                                        data: tph,
+                                        borderWidth: 1,
+                                        borderColor: '#064FF0',
+                                        backgroundColor: '#E7FDFF',
+                                        fill: true,
+                                    }]
+                                }}
+                            ></Line>
+                        }
+                    </>
+                }
+            </div>
+            <div className="hour-content pt-10 ml-20 ml-65 flex nowrap">
+                {weather?.forecast.forecastday[0].hour.map((el) => (
+                    <>
+                        <div className="hour">
+                            <span className="font_size-12 hour_temp flex horizontal_flex-center">{Math.round(el.temp_c)}&deg;C</span>
+                            <div className="hour_img">
+                                <img className="hour-img" src={el.condition.icon} alt="" ></img>
+                            </div>
+                            <span className="font_size-12 hour_time flex horizontal_flex-center">
+                                {el.time.split(' ')[1].split(':')[0] === now.getHours().toString() ? "Now" : el.time.split(' ')[1]}
+                            </span>
+                        </div>
+                    </>
+                ))
+                    
+                }
+            </div>
+        </div>
+    );
+}
+
+export default ChartComponent;
