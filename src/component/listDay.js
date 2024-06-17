@@ -3,19 +3,27 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.css';
 import getDoW from "../utils/getDoW";
+import { useData } from "../utils/context";
 
 const ListDay = ({weather}) => {
+    // var flag = weather?.forecast.forecastday[0].date;
     const [btn, setBtn] = useState(false);
-    const [keyModal, setKeyModal] = useState();
-
+    const [keyModal, setKeyModal] = useState(weather?.forecast.forecastday[0].date);
+    const {setDate} = useData();
+    // console.log(flag)
     return(
         <div className="weather-content mt-20 ml-20 flex">
             <div className="flex w-100 horizontal_flex-center">
                 {weather?.forecast.forecastday.map((el) => (
                     <>
-                        <div onDoubleClick={() => {setBtn(true); setKeyModal(el.date)}} 
-                        className={"weather flex flex_column " + 
-                            (el.date === weather?.forecast.forecastday[0].date ? "bg-064FF0 text_white" : "")
+                        <div 
+                            onClick={() => {
+                                const flag = el.date;
+                                setDate(new Date(flag).getDay());
+                            }}
+                            onDoubleClick={() => {setBtn(true); setKeyModal(el.date)}} 
+                            className={"weather flex flex_column " + 
+                                (el.date === weather?.forecast.forecastday[0].date ? "bg-064FF0 text_white" : "")
                         }
                         >
                             <div className="flex horizontal_flex-center">
