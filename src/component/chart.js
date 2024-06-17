@@ -5,12 +5,13 @@ ChartJS.register(...registerables);
 const ChartComponent = ({weather}) => {
     const time = weather?.forecast.forecastday[0].hour.map((el) => el.time.split(' ')[1].split(':')[0]);
     const tph = weather?.forecast.forecastday[0].hour.map((el) => el.temp_c)
+    const humidity = weather?.forecast.forecastday[0].hour.map((el) => el.humidity)
+    const uv = weather?.forecast.forecastday[0].hour.map((el) => el.uv)
     // console.log(tph)
     const now = new Date();
     return(
         <div className=" flex horizontal_flex-center flex_column">
             <div className="chart-content mt-20 ml-20 pb-20 pl-40">
-                <div>Temperature</div>
                 {
                     <>
                         {tph &&
@@ -18,7 +19,7 @@ const ChartComponent = ({weather}) => {
                             options={{
                                 plugins: {
                                     legend: {
-                                    display: false
+                                        display: true
                                     }
                                 },
                                 scales: {
@@ -28,7 +29,6 @@ const ChartComponent = ({weather}) => {
                                     y: {
                                         display: false,
                                         beginAtZero: true,
-                                        max: 50,
                                     },
                                 },
                                 elements: {
@@ -39,14 +39,32 @@ const ChartComponent = ({weather}) => {
                             }}
                                 data={{
                                     labels: time,
-                                    datasets:[{
+                                    datasets:[
+                                    {
                                         label: "Temperature",
                                         data: tph,
                                         borderWidth: 1,
                                         borderColor: '#064FF0',
                                         backgroundColor: '#E7FDFF',
-                                        fill: true,
-                                    }]
+                                        fill: false,
+                                    },
+                                    {
+                                        label: "Humidity",
+                                        data: humidity,
+                                        borderWidth: 1,
+                                        borderColor: '#D061EC',
+                                        backgroundColor: '#E3BFEC',
+                                        fill: false,
+                                    },
+                                    {
+                                        label: "UV",
+                                        data: uv,
+                                        borderWidth: 1,
+                                        borderColor: '#D53B3B',
+                                        backgroundColor: '#EED6D6',
+                                        fill: false,
+                                    }
+                                ]
                                 }}
                             ></Line>
                         }

@@ -84,6 +84,7 @@
 .nowrap{
   flex-wrap: nowrap;
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 .bg-064FF0{
   background-color: #064FF0;

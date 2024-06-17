@@ -1,35 +1,36 @@
+// import getDoW from "../utils/getDoW";
+import Time from "./realTime";
 
 const CurrentWeather = ({weather}) =>{
-    const formatLocalDateTime = (dateTimeString) => {
-        const dateTime = new Date(dateTimeString);
-        const dayOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][
-          dateTime.getDay()
-        ];
-        const month = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ][dateTime.getMonth()];
-        const date = dateTime.getDate();
-        const hours = dateTime.getHours() % 12 || 12;
-        const minutes = dateTime.getMinutes().toString().padStart(2, "0");
-        const ampm = dateTime.getHours() >= 12 ? "PM" : "AM";
-        return `${dayOfWeek}, ${month} ${date}, ${hours}:${minutes} ${ampm}`;
-    };
+    // const formatLocalDateTime = (dateTimeString) => {
+    //     const dateTime = new Date(dateTimeString);
+    //     const dayOfWeek = getDoW(dateTimeString);
+    //     const month = [
+    //       "Jan",
+    //       "Feb",
+    //       "Mar",
+    //       "Apr",
+    //       "May",
+    //       "Jun",
+    //       "Jul",
+    //       "Aug",
+    //       "Sep",
+    //       "Oct",
+    //       "Nov",
+    //       "Dec",
+    //     ][dateTime.getMonth()];
+    //     const date = dateTime.getDate();
+    //     const hours = dateTime.getHours() % 12 || 12;
+    //     const minutes = dateTime.getMinutes().toString().padStart(2, "0");
+    //     const ampm = dateTime.getHours() >= 12 ? "PM" : "AM";
+    //     return `${dayOfWeek}, ${month} ${date}, ${hours}:${minutes} ${ampm}`;
+    // };
     
     return(
         <div className="current_weather-content ml-20 mt-20">
             <div className="current_time center_text">
-                {formatLocalDateTime(weather?.location.localtime)}
+                {/* {formatLocalDateTime(weather?.location.localtime)} */}
+                <Time/>
             </div>
             <div>
                 <div className="pt-20 pl-20 flex vertical_flex-center">

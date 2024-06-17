@@ -5,7 +5,7 @@ const Search = ({city, setCity}) => {
 
     const handleChange = (event) => {
         setCityName(event.target.value);
-      };
+    };
     const handleSubmit = (event) => {
         event.preventDefault();
         setCity(cityName);
