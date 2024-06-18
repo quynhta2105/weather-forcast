@@ -5,7 +5,7 @@ const DataContext = createContext();
 
 // Create a provider component
 export const DataProvider = ({ children }) => {
-  const [date, setDate] = useState(1);
+  const [date, setDate] = useState(new Date().getDate());
   
   return (
     <DataContext.Provider value={{ date, setDate }}>

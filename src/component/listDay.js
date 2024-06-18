@@ -9,8 +9,7 @@ const ListDay = ({weather}) => {
     // var flag = weather?.forecast.forecastday[0].date;
     const [btn, setBtn] = useState(false);
     const [keyModal, setKeyModal] = useState(weather?.forecast.forecastday[0].date);
-    const {setDate} = useData();
-    // console.log(flag)
+    const {date,setDate} = useData();
     return(
         <div className="weather-content mt-20 ml-20 flex">
             <div className="flex w-100 horizontal_flex-center">
@@ -18,12 +17,11 @@ const ListDay = ({weather}) => {
                     <>
                         <div 
                             onClick={() => {
-                                const flag = el.date;
-                                setDate(new Date(flag).getDay());
+                                setDate(new Date(el.date).getDate());
                             }}
                             onDoubleClick={() => {setBtn(true); setKeyModal(el.date)}} 
                             className={"weather flex flex_column " + 
-                                (el.date === weather?.forecast.forecastday[0].date ? "bg-064FF0 text_white" : "")
+                                (new Date(el.date).getDate() === date ? "bg-064FF0 text_white" : "")
                         }
                         >
                             <div className="flex horizontal_flex-center">

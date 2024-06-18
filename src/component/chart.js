@@ -5,12 +5,16 @@ import { useData } from "../utils/context";
 ChartJS.register(...registerables);
 const ChartComponent = ({weather}) => {
 
+    var index = 0;
     const {date} = useData();
+    index = Number(date) - Number(new Date().getDate());
+    console.log(index)     
 
-    const time = weather?.forecast.forecastday[date-1].hour.map((el) => el.time.split(' ')[1].split(':')[0]);
-    const tph = weather?.forecast.forecastday[date-1].hour.map((el) => el.temp_c)
-    const humidity = weather?.forecast.forecastday[date-1].hour.map((el) => el.humidity)
-    const uv = weather?.forecast.forecastday[date-1].hour.map((el) => el.uv)
+    const time = weather?.forecast.forecastday[index]?.hour?.map((el) => el.time.split(' ')[1].split(':')[0]);
+    const tph = weather?.forecast.forecastday[index]?.hour?.map((el) => el.temp_c)
+    const humidity = weather?.forecast.forecastday[index]?.hour?.map((el) => el.humidity)
+    const uv = weather?.forecast.forecastday[index]?.hour?.map((el) => el.uv)
+
     const now = new Date();
     return(
         <div className=" flex horizontal_flex-center flex_column">
