@@ -10,25 +10,30 @@ import { DataProvider } from './utils/context';
 
 function App() {
   const [weatherData, setWeather] = useState();
-  const [city, setCity] = useState("Hà Nội");
+
+  const data = async (cityName) =>{
+    try{
+      const response = await WeatherForecastApi(cityName);
+      setWeather(response)
+    }catch(e){
+      console.error("Error fetching weather data:", e);
+    }
+  }
+
+  const handleData = (name) => {
+    data(name);
+    console.log(name)
+  }
 
   useEffect(() => {
-    const data = async (cityName) =>{
-      try{
-        const response = await WeatherForecastApi(cityName);
-        setWeather(response)
-      }catch(e){
-        console.error("Error fetching weather data:", e);
-      }
-    }
-    data(city)
-  }, [city]);
+    data("Hà Nội")
+  },[]);
 
   return (
     <DataProvider>
       <div className="App flex">
         <div className='App-content'>
-          <Search city={city} setCity={setCity}></Search>
+          <Search sendData={handleData}></Search>
           <div className='flex'>
             <CurrentWeather weather={weatherData} />
             <div>

@@ -8,7 +8,6 @@ const ChartComponent = ({weather}) => {
     var index = 0;
     const {date} = useData();
     index = Number(date) - Number(new Date().getDate());
-    console.log(index)     
 
     const time = weather?.forecast.forecastday[index]?.hour?.map((el) => el.time.split(' ')[1].split(':')[0]);
     const tph = weather?.forecast.forecastday[index]?.hour?.map((el) => el.temp_c)

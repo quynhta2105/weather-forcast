@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-const Search = ({city, setCity}) => {
-    const [cityName, setCityName] = useState(city);
+const Search = ({sendData}) => {
+    const [cityName, setCityName] = useState("Hà Nội");
 
     const handleChange = (event) => {
         setCityName(event.target.value);
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        setCity(cityName);
+        sendData(cityName);
     };
 
     return(

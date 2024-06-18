@@ -30,7 +30,7 @@ const CurrentWeather = ({weather}) =>{
         <div className="current_weather-content ml-20 mt-20">
             <div className="current_time center_text">
                 {/* {formatLocalDateTime(weather?.location.localtime)} */}
-                <Time/>
+                {/* <Time/> */}
             </div>
             <div>
                 <div className="pt-20 pl-20 flex vertical_flex-center">
