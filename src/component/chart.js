@@ -9,7 +9,7 @@ const ChartComponent = ({weather}) => {
     const {date} = useData();
     index = Number(date) - Number(new Date().getDate());
 
-    const time = weather?.forecast.forecastday[index]?.hour?.map((el) => el.time.split(' ')[1].split(':')[0]);
+    const time = weather?.forecast.forecastday[index];
     const tph = weather?.forecast.forecastday[index]?.hour?.map((el) => el.temp_c)
     const humidity = weather?.forecast.forecastday[index]?.hour?.map((el) => el.humidity)
     const uv = weather?.forecast.forecastday[index]?.hour?.map((el) => el.uv)
@@ -44,7 +44,7 @@ const ChartComponent = ({weather}) => {
                                 }
                             }}
                                 data={{
-                                    labels: time,
+                                    labels: time.hour?.map((el) => el.time.split(' ')[1].split(':')[0]),
                                     datasets:[
                                     {
                                         label: "Temperature",
@@ -78,7 +78,7 @@ const ChartComponent = ({weather}) => {
                 }
             </div>
             <div className="hour-content pt-10 ml-20 ml-65 flex nowrap">
-                {weather?.forecast.forecastday[0].hour.map((el) => (
+                {time?.hour.map((el) => (
                     <>
                         <div className="hour">
                             <span className="font_size-12 hour_temp flex horizontal_flex-center">{Math.round(el.temp_c)}&deg;C</span>
