@@ -9,31 +9,31 @@ import { useEffect, useState } from 'react';
 import { DataProvider } from './utils/context';
 
 function App() {
-  const [weatherData, setWeather] = useState();
+  const [weatherData, setWeatherData] = useState();
 
-  const data = async (cityName) =>{
+  const handleGetDataFromAPI = async (cityName) =>{
     try{
       const response = await WeatherForecastApi(cityName);
-      setWeather(response)
+      setWeatherData(response)
     }catch(e){
       console.error("Error fetching weather data:", e);
     }
   }
 
-  const handleData = (name) => {
-    data(name);
+  const handleDataFromSearch = (name) => {
+    handleGetDataFromAPI(name);
     console.log(name)
   }
 
   useEffect(() => {
-    data("Hà Nội")
+    handleGetDataFromAPI("Hà Nội")
   },[]);
 
   return (
     <DataProvider>
       <div className="App flex">
         <div className='App-content'>
-          <Search sendData={handleData}></Search>
+          <Search sendData={handleDataFromSearch}></Search>
           <div className='flex'>
             <CurrentWeather weather={weatherData} />
             <div>

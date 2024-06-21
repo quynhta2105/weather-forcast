@@ -5,7 +5,7 @@ const Time = () =>{
     const [time, setTime] = useState(Date.now());
 
     useEffect(() => {
-    const interval = setInterval(() => setTime(Date.now()), 60000);
+    const interval = setInterval(() => setTime(Date.now()), 1000);
         return () => {
             clearInterval(interval);
         };
@@ -16,13 +16,13 @@ const Time = () =>{
 
         const hours = nowDate.getHours();
         const minutes = nowDate.getMinutes();
-        // const seconds = nowDate.getSeconds();
+        const seconds = nowDate.getSeconds();
 
         const formattedHours = String(hours).padStart(2, '0');
         const formattedMinutes = String(minutes).padStart(2, '0');
-        // const formattedSeconds = String(seconds).padStart(2, '0');
+        const formattedSeconds = String(seconds).padStart(2, '0');
         
-        return `${formattedHours}:${formattedMinutes}`;
+        return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
     }
 
     const getDoW = (time) => {

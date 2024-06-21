@@ -20,9 +20,7 @@ const ListDay = ({weather}) => {
                                 setDate(new Date(el.date).getDate());
                             }}
                             onDoubleClick={() => {setBtn(true); setKeyModal(el.date)}} 
-                            className={"weather flex flex_column " + 
-                                (new Date(el.date).getDate() === date ? "bg-064FF0 text_white" : "")
-                        }
+                            className={"weather flex flex_column " + (new Date(el.date).getDate() === date ? "bg-064FF0 text_white" : "")}
                         >
                             <div className="flex horizontal_flex-center">
                                 {el.date === weather?.forecast.forecastday[0].date ? "Today" : getDoW(el.date)}
